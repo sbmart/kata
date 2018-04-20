@@ -1,8 +1,8 @@
 import { 
-    GrapgQLObjectType
+    GraphQLObjectType
  } from 'graphql'
 import Db from './db';
 
-const Person = new GrapgQLObjectType({
+const Person = new GraphQLObjectType({
 
 });
