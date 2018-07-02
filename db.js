@@ -38,7 +38,7 @@ const Post = Conn.define('post', {
         allowNull: false
     },
     content: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(65536),
         allowNull: false
     }
 });
@@ -47,7 +47,7 @@ Person.hasMany(Post);
 Post.belongsTo(Person);
 
 Conn.sync({force: false}).then(()=>{
-    _.times(10000, ()=>{
+    _.times(9000, ()=>{
         Person.create({
             firstName: Faker.name.firstName(),
             lastName: Faker.name.lastName(),
