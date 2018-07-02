@@ -74,9 +74,25 @@ const Person = new GrapgQLObjectType({
       return {
         people: {
           type: new GraphQLList(Person),
-          resolve(root, args)
+          args: {
+            id: {
+              type: GraphQLInt
+            },
+            email: {
+              type: GraphQLString
+            }
+          },
+          resolve(root, args) {
+            return Db.models.person.findAll({where: args})
+          }
         }
       };
     }
 
   });
+
+  const Schema = new GraphQLSchema({
+    quiery: Query
+  });
+
+  export default Schema;
